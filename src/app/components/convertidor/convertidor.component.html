@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-10">
+            <div class="form-group">
+                <label for="cantidad">Ingrese la cantidad a Convertir</label>
+                <input type="number" class="form-control" [(ngModel)]="cantidad" (input)="convertir()" id="cantidad" placeholder="Ingrese la cantidad a convertir...">
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-md-5">
+            <div class="form group">
+                <label for="tengo">Tengo</label>
+                <select class="form-control" id="tengo" [(ngModel)]="tengo" (change)="convertir()">
+                    <option *ngFor="let moneda of monedas">{{ moneda }}</option>
+                    
+                </select>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form group">
+                <label for="quiero">Quiero convertir a</label>
+                <select class="form-control" id="quiero" [(ngModel)]="quiero" (change)="convertir()">
+                <option *ngFor="let moneda of monedas">{{ moneda }}</option>
+                </select>
+            </div>
+        </div>
+        <div id="contenedor-resultado">
+            <h4 *ngIf="cantidad > 0" class="text-center mt-4">
+                <span>{{ cantidad }} {{ tengo }}</span>
+                <span id="son">    son    </span>
+                <span>{{ total | number: "0.0-2" }} {{ quiero }}</span>
+            </h4>
+        </div>
+
+    </div>
+
+</div>
